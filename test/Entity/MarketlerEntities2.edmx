@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MarketlerModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aciklamalar">
+          <Key>
+            <PropertyRef Name="Aciklama_Id" />
+          </Key>
+          <Property Name="Aciklama_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Birimler">
+          <Key>
+            <PropertyRef Name="Birim_Id" />
+          </Key>
+          <Property Name="Birim_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Birim_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birim_Tutarı" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Kategori_Id" />
+          </Key>
+          <Property Name="Kategori_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategori_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Konumlar">
+          <Key>
+            <PropertyRef Name="Konum_Id" />
+          </Key>
+          <Property Name="Konum_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Enlem" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Boylam" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loglar">
+          <Key>
+            <PropertyRef Name="Log_Id" />
+          </Key>
+          <Property Name="Log_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Urun_Id" Type="int" Nullable="false" />
+          <Property Name="Konum_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marketler">
+          <Key>
+            <PropertyRef Name="Market_Id" />
+          </Key>
+          <Property Name="Market_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Market_Adi" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Konum_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sub_Kategori">
+          <Key>
+            <PropertyRef Name="Sub_Kategori_Id" />
+          </Key>
+          <Property Name="Sub_Kategori_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sub_Kategori_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kategori_Id" Type="int" Nullable="false" />
+          <Property Name="Aciklama_Id" Type="int" Nullable="false" />
+          <Property Name="Parent_Sub_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="Urun_Id" />
+          </Key>
+          <Property Name="Urun_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun_Adi" Type="nvarchar" MaxLength="500" />
+          <Property Name="Birim_Id" Type="int" />
+          <Property Name="Market_Id" Type="int" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kategori_Id" Type="int" />
+          <Property Name="Fiyat" Type="float" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Aciklama_Id" Type="int" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <Association Name="FK_Kategori_Aciklamalar">
+          <End Role="Aciklamalar" Type="Self.Aciklamalar" Multiplicity="1" />
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aciklamalar">
+              <PropertyRef Name="Aciklama_Id" />
+            </Principal>
+            <Dependent Role="Kategori">
+              <PropertyRef Name="Aciklama_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loglar_Konumlar">
+          <End Role="Konumlar" Type="Self.Konumlar" Multiplicity="1" />
+          <End Role="Loglar" Type="Self.Loglar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konumlar">
+              <PropertyRef Name="Konum_Id" />
+            </Principal>
+            <Dependent Role="Loglar">
+              <PropertyRef Name="Konum_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loglar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="Loglar" Type="Self.Loglar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Loglar">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loglar_Urunler">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="Loglar" Type="Self.Loglar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="Urun_Id" />
+            </Principal>
+            <Dependent Role="Loglar">
+              <PropertyRef Name="Urun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marketler_Konumlar">
+          <End Role="Konumlar" Type="Self.Konumlar" Multiplicity="1" />
+          <End Role="Marketler" Type="Self.Marketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konumlar">
+              <PropertyRef Name="Konum_Id" />
+            </Principal>
+            <Dependent Role="Marketler">
+              <PropertyRef Name="Konum_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Kategori_Aciklamalar">
+          <End Role="Aciklamalar" Type="Self.Aciklamalar" Multiplicity="1" />
+          <End Role="Sub_Kategori" Type="Self.Sub_Kategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aciklamalar">
+              <PropertyRef Name="Aciklama_Id" />
+            </Principal>
+            <Dependent Role="Sub_Kategori">
+              <PropertyRef Name="Aciklama_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Kategori_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="Sub_Kategori" Type="Self.Sub_Kategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Principal>
+            <Dependent Role="Sub_Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Aciklamalar">
+          <End Role="Aciklamalar" Type="Self.Aciklamalar" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aciklamalar">
+              <PropertyRef Name="Aciklama_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Aciklama_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="Birim_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Birim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Marketler">
+          <End Role="Marketler" Type="Self.Marketler" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marketler">
+              <PropertyRef Name="Market_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Market_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarketlerModel1StoreContainer">
+          <EntitySet Name="Aciklamalar" EntityType="Self.Aciklamalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konumlar" EntityType="Self.Konumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loglar" EntityType="Self.Loglar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marketler" EntityType="Self.Marketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub_Kategori" EntityType="Self.Sub_Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kategori_Aciklamalar" Association="Self.FK_Kategori_Aciklamalar">
+            <End Role="Aciklamalar" EntitySet="Aciklamalar" />
+            <End Role="Kategori" EntitySet="Kategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loglar_Konumlar" Association="Self.FK_Loglar_Konumlar">
+            <End Role="Konumlar" EntitySet="Konumlar" />
+            <End Role="Loglar" EntitySet="Loglar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loglar_Kullanicilar" Association="Self.FK_Loglar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Loglar" EntitySet="Loglar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loglar_Urunler" Association="Self.FK_Loglar_Urunler">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="Loglar" EntitySet="Loglar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marketler_Konumlar" Association="Self.FK_Marketler_Konumlar">
+            <End Role="Konumlar" EntitySet="Konumlar" />
+            <End Role="Marketler" EntitySet="Marketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Kategori_Aciklamalar" Association="Self.FK_Sub_Kategori_Aciklamalar">
+            <End Role="Aciklamalar" EntitySet="Aciklamalar" />
+            <End Role="Sub_Kategori" EntitySet="Sub_Kategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Kategori_Kategori" Association="Self.FK_Sub_Kategori_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Sub_Kategori" EntitySet="Sub_Kategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Aciklamalar" Association="Self.FK_Urunler_Aciklamalar">
+            <End Role="Aciklamalar" EntitySet="Aciklamalar" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Birimler" Association="Self.FK_Urunler_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Kategori" Association="Self.FK_Urunler_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Marketler" Association="Self.FK_Urunler_Marketler">
+            <End Role="Marketler" EntitySet="Marketler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MarketlerModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aciklamalar">
+          <Key>
+            <PropertyRef Name="Aciklama_Id" />
+          </Key>
+          <Property Name="Aciklama_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kategori" Relationship="Self.FK_Kategori_Aciklamalar" FromRole="Aciklamalar" ToRole="Kategori" />
+          <NavigationProperty Name="Sub_Kategori" Relationship="Self.FK_Sub_Kategori_Aciklamalar" FromRole="Aciklamalar" ToRole="Sub_Kategori" />
+          <NavigationProperty Name="Urunler" Relationship="MarketlerModel1.FK_Urunler_Aciklamalar" FromRole="Aciklamalar" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Birimler">
+          <Key>
+            <PropertyRef Name="Birim_Id" />
+          </Key>
+          <Property Name="Birim_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Birim_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birim_Tutarı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="MarketlerModel1.FK_Urunler_Birimler" FromRole="Birimler" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Kategori_Id" />
+          </Key>
+          <Property Name="Kategori_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategori_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aciklamalar" Relationship="Self.FK_Kategori_Aciklamalar" FromRole="Kategori" ToRole="Aciklamalar" />
+          <NavigationProperty Name="Sub_Kategori" Relationship="Self.FK_Sub_Kategori_Kategori" FromRole="Kategori" ToRole="Sub_Kategori" />
+          <NavigationProperty Name="Urunler" Relationship="MarketlerModel1.FK_Urunler_Kategori" FromRole="Kategori" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Konumlar">
+          <Key>
+            <PropertyRef Name="Konum_Id" />
+          </Key>
+          <Property Name="Konum_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Enlem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Boylam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Loglar" Relationship="Self.FK_Loglar_Konumlar" FromRole="Konumlar" ToRole="Loglar" />
+          <NavigationProperty Name="Marketler" Relationship="Self.FK_Marketler_Konumlar" FromRole="Konumlar" ToRole="Marketler" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Loglar" Relationship="Self.FK_Loglar_Kullanicilar" FromRole="Kullanicilar" ToRole="Loglar" />
+        </EntityType>
+        <EntityType Name="Loglar">
+          <Key>
+            <PropertyRef Name="Log_Id" />
+          </Key>
+          <Property Name="Log_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Urun_Id" Type="Int32" Nullable="false" />
+          <Property Name="Konum_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konumlar" Relationship="Self.FK_Loglar_Konumlar" FromRole="Loglar" ToRole="Konumlar" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Loglar_Kullanicilar" FromRole="Loglar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Urunler" Relationship="MarketlerModel1.FK_Loglar_Urunler" FromRole="Loglar" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Marketler">
+          <Key>
+            <PropertyRef Name="Market_Id" />
+          </Key>
+          <Property Name="Market_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Market_Adi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Konum_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konumlar" Relationship="Self.FK_Marketler_Konumlar" FromRole="Marketler" ToRole="Konumlar" />
+          <NavigationProperty Name="Urunler" Relationship="MarketlerModel1.FK_Urunler_Marketler" FromRole="Marketler" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Sub_Kategori">
+          <Key>
+            <PropertyRef Name="Sub_Kategori_Id" />
+          </Key>
+          <Property Name="Sub_Kategori_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sub_Kategori_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kategori_Id" Type="Int32" Nullable="false" />
+          <Property Name="Aciklama_Id" Type="Int32" Nullable="false" />
+          <Property Name="Parent_Sub_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aciklamalar" Relationship="Self.FK_Sub_Kategori_Aciklamalar" FromRole="Sub_Kategori" ToRole="Aciklamalar" />
+          <NavigationProperty Name="Kategori" Relationship="Self.FK_Sub_Kategori_Kategori" FromRole="Sub_Kategori" ToRole="Kategori" />
+        </EntityType>
+        <Association Name="FK_Kategori_Aciklamalar">
+          <End Role="Aciklamalar" Type="Self.Aciklamalar" Multiplicity="1" />
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aciklamalar">
+              <PropertyRef Name="Aciklama_Id" />
+            </Principal>
+            <Dependent Role="Kategori">
+              <PropertyRef Name="Aciklama_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Kategori_Aciklamalar">
+          <End Role="Aciklamalar" Type="Self.Aciklamalar" Multiplicity="1" />
+          <End Role="Sub_Kategori" Type="Self.Sub_Kategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aciklamalar">
+              <PropertyRef Name="Aciklama_Id" />
+            </Principal>
+            <Dependent Role="Sub_Kategori">
+              <PropertyRef Name="Aciklama_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Kategori_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="Sub_Kategori" Type="Self.Sub_Kategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Principal>
+            <Dependent Role="Sub_Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loglar_Konumlar">
+          <End Role="Konumlar" Type="Self.Konumlar" Multiplicity="1" />
+          <End Role="Loglar" Type="Self.Loglar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konumlar">
+              <PropertyRef Name="Konum_Id" />
+            </Principal>
+            <Dependent Role="Loglar">
+              <PropertyRef Name="Konum_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marketler_Konumlar">
+          <End Role="Konumlar" Type="Self.Konumlar" Multiplicity="1" />
+          <End Role="Marketler" Type="Self.Marketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konumlar">
+              <PropertyRef Name="Konum_Id" />
+            </Principal>
+            <Dependent Role="Marketler">
+              <PropertyRef Name="Konum_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loglar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="Loglar" Type="Self.Loglar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Loglar">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarketlerEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aciklamalar" EntityType="Self.Aciklamalar" />
+          <EntitySet Name="Birimler" EntityType="Self.Birimler" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" />
+          <EntitySet Name="Konumlar" EntityType="Self.Konumlar" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Loglar" EntityType="Self.Loglar" />
+          <EntitySet Name="Marketler" EntityType="Self.Marketler" />
+          <EntitySet Name="Sub_Kategori" EntityType="Self.Sub_Kategori" />
+          <AssociationSet Name="FK_Kategori_Aciklamalar" Association="Self.FK_Kategori_Aciklamalar">
+            <End Role="Aciklamalar" EntitySet="Aciklamalar" />
+            <End Role="Kategori" EntitySet="Kategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Kategori_Aciklamalar" Association="Self.FK_Sub_Kategori_Aciklamalar">
+            <End Role="Aciklamalar" EntitySet="Aciklamalar" />
+            <End Role="Sub_Kategori" EntitySet="Sub_Kategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Kategori_Kategori" Association="Self.FK_Sub_Kategori_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Sub_Kategori" EntitySet="Sub_Kategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loglar_Konumlar" Association="Self.FK_Loglar_Konumlar">
+            <End Role="Konumlar" EntitySet="Konumlar" />
+            <End Role="Loglar" EntitySet="Loglar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marketler_Konumlar" Association="Self.FK_Marketler_Konumlar">
+            <End Role="Konumlar" EntitySet="Konumlar" />
+            <End Role="Marketler" EntitySet="Marketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loglar_Kullanicilar" Association="Self.FK_Loglar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Loglar" EntitySet="Loglar" />
+          </AssociationSet>
+          <EntitySet Name="Urunler" EntityType="MarketlerModel1.Urunler" />
+          <AssociationSet Name="FK_Urunler_Aciklamalar" Association="MarketlerModel1.FK_Urunler_Aciklamalar">
+            <End Role="Aciklamalar" EntitySet="Aciklamalar" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Birimler" Association="MarketlerModel1.FK_Urunler_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Kategori" Association="MarketlerModel1.FK_Urunler_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loglar_Urunler" Association="MarketlerModel1.FK_Loglar_Urunler">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="Loglar" EntitySet="Loglar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Marketler" Association="MarketlerModel1.FK_Urunler_Marketler">
+            <End Role="Marketler" EntitySet="Marketler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="Urun_Id" />
+          </Key>
+          <Property Name="Urun_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun_Adi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Birim_Id" Type="Int32" />
+          <Property Name="Market_Id" Type="Int32" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kategori_Id" Type="Int32" />
+          <Property Name="Fiyat" Type="Double" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama_Id" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <NavigationProperty Name="Aciklamalar" Relationship="MarketlerModel1.FK_Urunler_Aciklamalar" FromRole="Urunler" ToRole="Aciklamalar" />
+          <NavigationProperty Name="Birimler" Relationship="MarketlerModel1.FK_Urunler_Birimler" FromRole="Urunler" ToRole="Birimler" />
+          <NavigationProperty Name="Kategori" Relationship="MarketlerModel1.FK_Urunler_Kategori" FromRole="Urunler" ToRole="Kategori" />
+          <NavigationProperty Name="Loglar" Relationship="MarketlerModel1.FK_Loglar_Urunler" FromRole="Urunler" ToRole="Loglar" />
+          <NavigationProperty Name="Marketler" Relationship="MarketlerModel1.FK_Urunler_Marketler" FromRole="Urunler" ToRole="Marketler" />
+        </EntityType>
+        <Association Name="FK_Urunler_Aciklamalar">
+          <End Type="MarketlerModel1.Aciklamalar" Role="Aciklamalar" Multiplicity="0..1" />
+          <End Type="MarketlerModel1.Urunler" Role="Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aciklamalar">
+              <PropertyRef Name="Aciklama_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Aciklama_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Birimler">
+          <End Type="MarketlerModel1.Birimler" Role="Birimler" Multiplicity="0..1" />
+          <End Type="MarketlerModel1.Urunler" Role="Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="Birim_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Birim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Kategori">
+          <End Type="MarketlerModel1.Kategori" Role="Kategori" Multiplicity="0..1" />
+          <End Type="MarketlerModel1.Urunler" Role="Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loglar_Urunler">
+          <End Type="MarketlerModel1.Urunler" Role="Urunler" Multiplicity="1" />
+          <End Type="MarketlerModel1.Loglar" Role="Loglar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="Urun_Id" />
+            </Principal>
+            <Dependent Role="Loglar">
+              <PropertyRef Name="Urun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Marketler">
+          <End Type="MarketlerModel1.Marketler" Role="Marketler" Multiplicity="0..1" />
+          <End Type="MarketlerModel1.Urunler" Role="Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marketler">
+              <PropertyRef Name="Market_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Market_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MarketlerModel1StoreContainer" CdmEntityContainer="MarketlerEntities2">
+          <EntitySetMapping Name="Aciklamalar">
+            <EntityTypeMapping TypeName="MarketlerModel1.Aciklamalar">
+              <MappingFragment StoreEntitySet="Aciklamalar">
+                <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Birimler">
+            <EntityTypeMapping TypeName="MarketlerModel1.Birimler">
+              <MappingFragment StoreEntitySet="Birimler">
+                <ScalarProperty Name="Birim_Id" ColumnName="Birim_Id" />
+                <ScalarProperty Name="Birim_Adi" ColumnName="Birim_Adi" />
+                <ScalarProperty Name="Birim_Tutarı" ColumnName="Birim_Tutarı" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori">
+            <EntityTypeMapping TypeName="MarketlerModel1.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+                <ScalarProperty Name="Kategori_Adi" ColumnName="Kategori_Adi" />
+                <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konumlar">
+            <EntityTypeMapping TypeName="MarketlerModel1.Konumlar">
+              <MappingFragment StoreEntitySet="Konumlar">
+                <ScalarProperty Name="Konum_Id" ColumnName="Konum_Id" />
+                <ScalarProperty Name="Enlem" ColumnName="Enlem" />
+                <ScalarProperty Name="Boylam" ColumnName="Boylam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="MarketlerModel1.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="User_Adi" ColumnName="User_Adi" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loglar">
+            <EntityTypeMapping TypeName="MarketlerModel1.Loglar">
+              <MappingFragment StoreEntitySet="Loglar">
+                <ScalarProperty Name="Log_Id" ColumnName="Log_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+                <ScalarProperty Name="Konum_Id" ColumnName="Konum_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marketler">
+            <EntityTypeMapping TypeName="MarketlerModel1.Marketler">
+              <MappingFragment StoreEntitySet="Marketler">
+                <ScalarProperty Name="Market_Id" ColumnName="Market_Id" />
+                <ScalarProperty Name="Market_Adi" ColumnName="Market_Adi" />
+                <ScalarProperty Name="Konum_Id" ColumnName="Konum_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub_Kategori">
+            <EntityTypeMapping TypeName="MarketlerModel1.Sub_Kategori">
+              <MappingFragment StoreEntitySet="Sub_Kategori">
+                <ScalarProperty Name="Sub_Kategori_Id" ColumnName="Sub_Kategori_Id" />
+                <ScalarProperty Name="Sub_Kategori_Adi" ColumnName="Sub_Kategori_Adi" />
+                <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+                <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+                <ScalarProperty Name="Parent_Sub_Id" ColumnName="Parent_Sub_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urunler">
+            <EntityTypeMapping TypeName="MarketlerModel1.Urunler">
+              <MappingFragment StoreEntitySet="Urunler">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Market_Id" ColumnName="Market_Id" />
+                <ScalarProperty Name="Birim_Id" ColumnName="Birim_Id" />
+                <ScalarProperty Name="Urun_Adi" ColumnName="Urun_Adi" />
+                <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

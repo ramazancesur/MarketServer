@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertKirmiziEt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertKirmiziEtResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertKirmiziEtResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSebze">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSebzeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertSebzeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertMeyve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertMeyveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertMeyveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertMarket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="marketAdi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="marketAdresi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertMarketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertMarketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSüt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSütResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertSütResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertYogurt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertYogurtResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertYogurtResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPeynir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPeynirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPeynirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakroInsertAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakroInsertAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakroInsertAllResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertKirmiziEtSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertKirmiziEt" />
+  </wsdl:message>
+  <wsdl:message name="InsertKirmiziEtSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertKirmiziEtResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSebzeSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSebze" />
+  </wsdl:message>
+  <wsdl:message name="InsertSebzeSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSebzeResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertMeyveSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertMeyve" />
+  </wsdl:message>
+  <wsdl:message name="InsertMeyveSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertMeyveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertMarketSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertMarket" />
+  </wsdl:message>
+  <wsdl:message name="InsertMarketSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertMarketResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSütSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSüt" />
+  </wsdl:message>
+  <wsdl:message name="InsertSütSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSütResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertYogurtSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertYogurt" />
+  </wsdl:message>
+  <wsdl:message name="InsertYogurtSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertYogurtResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPeynirSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPeynir" />
+  </wsdl:message>
+  <wsdl:message name="InsertPeynirSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPeynirResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakroInsertAllSoapIn">
+    <wsdl:part name="parameters" element="tns:MakroInsertAll" />
+  </wsdl:message>
+  <wsdl:message name="MakroInsertAllSoapOut">
+    <wsdl:part name="parameters" element="tns:MakroInsertAllResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MakroServicesSoap">
+    <wsdl:operation name="InsertKirmiziEt">
+      <wsdl:input message="tns:InsertKirmiziEtSoapIn" />
+      <wsdl:output message="tns:InsertKirmiziEtSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSebze">
+      <wsdl:input message="tns:InsertSebzeSoapIn" />
+      <wsdl:output message="tns:InsertSebzeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMeyve">
+      <wsdl:input message="tns:InsertMeyveSoapIn" />
+      <wsdl:output message="tns:InsertMeyveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMarket">
+      <wsdl:input message="tns:InsertMarketSoapIn" />
+      <wsdl:output message="tns:InsertMarketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSüt">
+      <wsdl:input message="tns:InsertSütSoapIn" />
+      <wsdl:output message="tns:InsertSütSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertYogurt">
+      <wsdl:input message="tns:InsertYogurtSoapIn" />
+      <wsdl:output message="tns:InsertYogurtSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPeynir">
+      <wsdl:input message="tns:InsertPeynirSoapIn" />
+      <wsdl:output message="tns:InsertPeynirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakroInsertAll">
+      <wsdl:input message="tns:MakroInsertAllSoapIn" />
+      <wsdl:output message="tns:MakroInsertAllSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MakroServicesSoap" type="tns:MakroServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertKirmiziEt">
+      <soap:operation soapAction="http://tempuri.org/InsertKirmiziEt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSebze">
+      <soap:operation soapAction="http://tempuri.org/InsertSebze" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMeyve">
+      <soap:operation soapAction="http://tempuri.org/InsertMeyve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMarket">
+      <soap:operation soapAction="http://tempuri.org/InsertMarket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSüt">
+      <soap:operation soapAction="http://tempuri.org/InsertSüt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertYogurt">
+      <soap:operation soapAction="http://tempuri.org/InsertYogurt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPeynir">
+      <soap:operation soapAction="http://tempuri.org/InsertPeynir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakroInsertAll">
+      <soap:operation soapAction="http://tempuri.org/MakroInsertAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MakroServicesSoap12" type="tns:MakroServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertKirmiziEt">
+      <soap12:operation soapAction="http://tempuri.org/InsertKirmiziEt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSebze">
+      <soap12:operation soapAction="http://tempuri.org/InsertSebze" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMeyve">
+      <soap12:operation soapAction="http://tempuri.org/InsertMeyve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMarket">
+      <soap12:operation soapAction="http://tempuri.org/InsertMarket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSüt">
+      <soap12:operation soapAction="http://tempuri.org/InsertSüt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertYogurt">
+      <soap12:operation soapAction="http://tempuri.org/InsertYogurt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPeynir">
+      <soap12:operation soapAction="http://tempuri.org/InsertPeynir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakroInsertAll">
+      <soap12:operation soapAction="http://tempuri.org/MakroInsertAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MakroServices">
+    <wsdl:port name="MakroServicesSoap" binding="tns:MakroServicesSoap">
+      <soap:address location="http://elifdamla.com/ParseWs/MakroServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MakroServicesSoap12" binding="tns:MakroServicesSoap12">
+      <soap12:address location="http://elifdamla.com/ParseWs/MakroServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d37de582463b42b799039827e68b4a71" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="MarketlerModel.Aciklamalar" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Birimler" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Kategori" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Konumlar" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Kullanicilar" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Loglar" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Marketler" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.Sub_Kategori" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketlerModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="MarketlerModel.FK_Kategori_Aciklamalar" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketlerModel.FK_Sub_Kategori_Aciklamalar" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketlerModel.FK_Sub_Kategori_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketlerModel.FK_Loglar_Konumlar" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketlerModel.FK_Marketler_Konumlar" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketlerModel.FK_Loglar_Kullanicilar" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MarketlerModel.Urunler" Width="1.5" PointX="8.25" PointY="3.875" />
+        <AssociationConnector Association="MarketlerModel.FK_Urunler_Aciklamalar" />
+        <AssociationConnector Association="MarketlerModel.FK_Urunler_Birimler" />
+        <AssociationConnector Association="MarketlerModel.FK_Urunler_Kategori" />
+        <AssociationConnector Association="MarketlerModel.FK_Loglar_Urunler" />
+        <AssociationConnector Association="MarketlerModel.FK_Urunler_Marketler" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

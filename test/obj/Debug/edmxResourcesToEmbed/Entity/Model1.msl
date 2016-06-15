@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MarketlerModelStoreContainer" CdmEntityContainer="MarketlerEntities">
+    <EntitySetMapping Name="Aciklamalar">
+      <EntityTypeMapping TypeName="MarketlerModel.Aciklamalar">
+        <MappingFragment StoreEntitySet="Aciklamalar">
+          <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Birimler">
+      <EntityTypeMapping TypeName="MarketlerModel.Birimler">
+        <MappingFragment StoreEntitySet="Birimler">
+          <ScalarProperty Name="Birim_Id" ColumnName="Birim_Id" />
+          <ScalarProperty Name="Birim_Adi" ColumnName="Birim_Adi" />
+          <ScalarProperty Name="Birim_Tutarı" ColumnName="Birim_Tutarı" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="MarketlerModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+          <ScalarProperty Name="Kategori_Adi" ColumnName="Kategori_Adi" />
+          <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Konumlar">
+      <EntityTypeMapping TypeName="MarketlerModel.Konumlar">
+        <MappingFragment StoreEntitySet="Konumlar">
+          <ScalarProperty Name="Konum_Id" ColumnName="Konum_Id" />
+          <ScalarProperty Name="Enlem" ColumnName="Enlem" />
+          <ScalarProperty Name="Boylam" ColumnName="Boylam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicilar">
+      <EntityTypeMapping TypeName="MarketlerModel.Kullanicilar">
+        <MappingFragment StoreEntitySet="Kullanicilar">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="User_Adi" ColumnName="User_Adi" />
+          <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loglar">
+      <EntityTypeMapping TypeName="MarketlerModel.Loglar">
+        <MappingFragment StoreEntitySet="Loglar">
+          <ScalarProperty Name="Log_Id" ColumnName="Log_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+          <ScalarProperty Name="Konum_Id" ColumnName="Konum_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marketler">
+      <EntityTypeMapping TypeName="MarketlerModel.Marketler">
+        <MappingFragment StoreEntitySet="Marketler">
+          <ScalarProperty Name="Market_Id" ColumnName="Market_Id" />
+          <ScalarProperty Name="Market_Adi" ColumnName="Market_Adi" />
+          <ScalarProperty Name="Konum_Id" ColumnName="Konum_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sub_Kategori">
+      <EntityTypeMapping TypeName="MarketlerModel.Sub_Kategori">
+        <MappingFragment StoreEntitySet="Sub_Kategori">
+          <ScalarProperty Name="Sub_Kategori_Id" ColumnName="Sub_Kategori_Id" />
+          <ScalarProperty Name="Sub_Kategori_Adi" ColumnName="Sub_Kategori_Adi" />
+          <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+          <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+          <ScalarProperty Name="Parent_Sub_Id" ColumnName="Parent_Sub_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MarketlerModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urunler">
+      <EntityTypeMapping TypeName="MarketlerModel.Urunler">
+        <MappingFragment StoreEntitySet="Urunler">
+          <ScalarProperty Name="Aciklama_Id" ColumnName="Aciklama_Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Market_Id" ColumnName="Market_Id" />
+          <ScalarProperty Name="Birim_Id" ColumnName="Birim_Id" />
+          <ScalarProperty Name="Urun_Adi" ColumnName="Urun_Adi" />
+          <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

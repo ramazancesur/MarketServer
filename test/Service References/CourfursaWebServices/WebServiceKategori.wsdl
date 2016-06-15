@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getKategoriListAndAdd">
+        <s:complexType />
+      </s:element>
+      <s:element name="getKategoriListAndAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getKategoriListAndAddResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddEtveEtUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddEtveEtUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddEtveEtUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TavukveHindiUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TavukveHindiUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TavukveHindiUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MeyveUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MeyveUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MeyveUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertKategori">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertKategoriResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertKategoriResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BalikveDenizMahsülleriUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BalikveDenizMahsülleriUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BalikveDenizMahsülleriUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SütParseUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SütParseUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SütParseUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PeynirParseUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PeynirParseUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PeynirParseUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YumurtaVeTerayagParseUrunu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YumurtaVeTerayagParseUrunuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="YumurtaVeTerayagParseUrunuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CourfursaInsertAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kategoriID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="marketID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CourfursaInsertAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CourfursaInsertAllResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getKategoriListAndAddSoapIn">
+    <wsdl:part name="parameters" element="tns:getKategoriListAndAdd" />
+  </wsdl:message>
+  <wsdl:message name="getKategoriListAndAddSoapOut">
+    <wsdl:part name="parameters" element="tns:getKategoriListAndAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddEtveEtUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:AddEtveEtUrunu" />
+  </wsdl:message>
+  <wsdl:message name="AddEtveEtUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:AddEtveEtUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="TavukveHindiUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:TavukveHindiUrunu" />
+  </wsdl:message>
+  <wsdl:message name="TavukveHindiUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:TavukveHindiUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="MeyveUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:MeyveUrunu" />
+  </wsdl:message>
+  <wsdl:message name="MeyveUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:MeyveUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertKategoriSoapIn">
+    <wsdl:part name="parameters" element="tns:insertKategori" />
+  </wsdl:message>
+  <wsdl:message name="insertKategoriSoapOut">
+    <wsdl:part name="parameters" element="tns:insertKategoriResponse" />
+  </wsdl:message>
+  <wsdl:message name="BalikveDenizMahsülleriUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:BalikveDenizMahsülleriUrunu" />
+  </wsdl:message>
+  <wsdl:message name="BalikveDenizMahsülleriUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:BalikveDenizMahsülleriUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="SütParseUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:SütParseUrunu" />
+  </wsdl:message>
+  <wsdl:message name="SütParseUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:SütParseUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="PeynirParseUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:PeynirParseUrunu" />
+  </wsdl:message>
+  <wsdl:message name="PeynirParseUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:PeynirParseUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="YumurtaVeTerayagParseUrunuSoapIn">
+    <wsdl:part name="parameters" element="tns:YumurtaVeTerayagParseUrunu" />
+  </wsdl:message>
+  <wsdl:message name="YumurtaVeTerayagParseUrunuSoapOut">
+    <wsdl:part name="parameters" element="tns:YumurtaVeTerayagParseUrunuResponse" />
+  </wsdl:message>
+  <wsdl:message name="CourfursaInsertAllSoapIn">
+    <wsdl:part name="parameters" element="tns:CourfursaInsertAll" />
+  </wsdl:message>
+  <wsdl:message name="CourfursaInsertAllSoapOut">
+    <wsdl:part name="parameters" element="tns:CourfursaInsertAllResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceKategoriSoap">
+    <wsdl:operation name="getKategoriListAndAdd">
+      <wsdl:input message="tns:getKategoriListAndAddSoapIn" />
+      <wsdl:output message="tns:getKategoriListAndAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEtveEtUrunu">
+      <wsdl:input message="tns:AddEtveEtUrunuSoapIn" />
+      <wsdl:output message="tns:AddEtveEtUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TavukveHindiUrunu">
+      <wsdl:input message="tns:TavukveHindiUrunuSoapIn" />
+      <wsdl:output message="tns:TavukveHindiUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MeyveUrunu">
+      <wsdl:input message="tns:MeyveUrunuSoapIn" />
+      <wsdl:output message="tns:MeyveUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertKategori">
+      <wsdl:input message="tns:insertKategoriSoapIn" />
+      <wsdl:output message="tns:insertKategoriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BalikveDenizMahsülleriUrunu">
+      <wsdl:input message="tns:BalikveDenizMahsülleriUrunuSoapIn" />
+      <wsdl:output message="tns:BalikveDenizMahsülleriUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SütParseUrunu">
+      <wsdl:input message="tns:SütParseUrunuSoapIn" />
+      <wsdl:output message="tns:SütParseUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PeynirParseUrunu">
+      <wsdl:input message="tns:PeynirParseUrunuSoapIn" />
+      <wsdl:output message="tns:PeynirParseUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YumurtaVeTerayagParseUrunu">
+      <wsdl:input message="tns:YumurtaVeTerayagParseUrunuSoapIn" />
+      <wsdl:output message="tns:YumurtaVeTerayagParseUrunuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CourfursaInsertAll">
+      <wsdl:input message="tns:CourfursaInsertAllSoapIn" />
+      <wsdl:output message="tns:CourfursaInsertAllSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceKategoriSoap" type="tns:WebServiceKategoriSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getKategoriListAndAdd">
+      <soap:operation soapAction="http://tempuri.org/getKategoriListAndAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEtveEtUrunu">
+      <soap:operation soapAction="http://tempuri.org/AddEtveEtUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TavukveHindiUrunu">
+      <soap:operation soapAction="http://tempuri.org/TavukveHindiUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeyveUrunu">
+      <soap:operation soapAction="http://tempuri.org/MeyveUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertKategori">
+      <soap:operation soapAction="http://tempuri.org/insertKategori" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BalikveDenizMahsülleriUrunu">
+      <soap:operation soapAction="http://tempuri.org/BalikveDenizMahsülleriUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SütParseUrunu">
+      <soap:operation soapAction="http://tempuri.org/SütParseUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PeynirParseUrunu">
+      <soap:operation soapAction="http://tempuri.org/PeynirParseUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YumurtaVeTerayagParseUrunu">
+      <soap:operation soapAction="http://tempuri.org/YumurtaVeTerayagParseUrunu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CourfursaInsertAll">
+      <soap:operation soapAction="http://tempuri.org/CourfursaInsertAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceKategoriSoap12" type="tns:WebServiceKategoriSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getKategoriListAndAdd">
+      <soap12:operation soapAction="http://tempuri.org/getKategoriListAndAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEtveEtUrunu">
+      <soap12:operation soapAction="http://tempuri.org/AddEtveEtUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TavukveHindiUrunu">
+      <soap12:operation soapAction="http://tempuri.org/TavukveHindiUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeyveUrunu">
+      <soap12:operation soapAction="http://tempuri.org/MeyveUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertKategori">
+      <soap12:operation soapAction="http://tempuri.org/insertKategori" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BalikveDenizMahsülleriUrunu">
+      <soap12:operation soapAction="http://tempuri.org/BalikveDenizMahsülleriUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SütParseUrunu">
+      <soap12:operation soapAction="http://tempuri.org/SütParseUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PeynirParseUrunu">
+      <soap12:operation soapAction="http://tempuri.org/PeynirParseUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YumurtaVeTerayagParseUrunu">
+      <soap12:operation soapAction="http://tempuri.org/YumurtaVeTerayagParseUrunu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CourfursaInsertAll">
+      <soap12:operation soapAction="http://tempuri.org/CourfursaInsertAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceKategori">
+    <wsdl:port name="WebServiceKategoriSoap" binding="tns:WebServiceKategoriSoap">
+      <soap:address location="http://elifdamla.com/ParseWs/WebServiceKategori.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceKategoriSoap12" binding="tns:WebServiceKategoriSoap12">
+      <soap12:address location="http://elifdamla.com/ParseWs/WebServiceKategori.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

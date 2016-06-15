@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="test.RestWs.WsfWs.Urun.Urun" CodeBehind="UrunServices.svc.cs" %>
